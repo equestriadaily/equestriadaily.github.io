@@ -9,7 +9,7 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 document.write("<title>"+getParameterByName("post_title")+"</title>");
-document.write("<base href='"+getParameterByName("post_link")+"' />");
+document.write("<base href='https://www.equestriadaily.com' />");
 
 var fontFace = getParameterByName("font_face");
 console.log(fontFace);
@@ -28,7 +28,7 @@ var idcomments_post_title = getParameterByName("post_title");
 </head>
 <body>
 <h5>This page is for archival purposes only. Comments made on this page will not be processed</h5>
-<script type="text/javascript" src="//www.intensedebate.com/js/genericCommentWrapperV2.js"></script>
+<script type="text/javascript" src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script>
 </body>
 
 </html>
