@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        @media (prefers-color-scheme: dark) {
+			body {
+				color: #cccccc;
+				background-color: #222222;
+			}
+			a {
+				color: #5ab9ff;
+			}
+		}
+		iframe[src*="ads-iframe"] { display: none; }
+    </style>
+</head>
+<body>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var params;
+    var disqus_config;
+
+	$( document ).ready(function() {
+		var match,
+			pattern = /\+/g,
+			search = /([^&=]+)=?([^&]*)/g,
+			decode = function (s) { return decodeURIComponent(s.replace(pattern, " ")); },
+			query = window.location.search.substring(1);
+		params = {};
+		while (match = search.exec(query))
+		   params[decode(match[1])] = decode(match[2]);
+	    
+		if (params["post_link"] === undefined || params["post_title"] === undefined || params["post_id"] === undefined) {
+			alert("Required arguments missing");
+		}
+		else {
+			loadComments("equestriadaily", params["post_link"], params["post_title"], params["post_id"]);
+		}
+		
+		/*var checkInterval = setInterval(() => {
+			console.log("Checking for ads...");
+			$.each($('iframe'), (arr,x) => {
+				let src = $(x).attr('src');
+				if (src && src.match(/(ads-iframe)|(disqusads)/gi)) {
+					$(x).remove();
+					clearInterval(checkInterval);
+				}
+			});
+		}, 300);*/
+	});
+	
+    function loadComments(site_shortname, post_url, post_title, post_identifier) {
+        var ds_identifier = "";
+		if (post_identifier !== undefined)
+			ds_identifier = post_identifier;
+
+        var ds_shortname = site_shortname;
+
+
+        disqus_config = function () {
+            this.page.url = post_url;
+            this.page.identifier = ds_identifier; 
+            this.page.title = post_title;
+        };
+	
+		(function() {  // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+        
+            s.src = 'https://'+ds_shortname+'.disqus.com/embed.js';
+        
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    }
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</body>
+</html>
