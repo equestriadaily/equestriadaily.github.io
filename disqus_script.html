@@ -43,6 +43,8 @@
 			loadComments("equestriadaily", params["post_link"], params["post_title"], params["post_id"]);
 		}
 		
+		document.title = params["post_title"];
+		
 		/*var checkInterval = setInterval(() => {
 			console.log("Checking for ads...");
 			$.each($('iframe'), (arr,x) => {
