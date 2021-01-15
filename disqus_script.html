@@ -41,7 +41,7 @@
 			alert("Required arguments missing");
 		}
 		else {
-		        document.title = params["post_title"];
+			document.title = params["post_title"] ?? "Comments"
 			loadComments("equestriadaily", params["post_link"], params["post_title"], params["post_id"]);
 		}
 		
