@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "org.equestriadaily.eqdailyapp",
+    "sha256_cert_fingerprints":
+    ["39:E0:F2:80:3B:06:0F:8D:C6:EA:AC:F1:CB:86:1A:62:7F:89:E6:48:DC:5F:F9:A5:54:F8:16:C9:92:5B:09:0E"]
+  }
+}]
